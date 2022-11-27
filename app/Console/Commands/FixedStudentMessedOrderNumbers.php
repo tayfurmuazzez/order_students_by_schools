@@ -59,7 +59,9 @@ class FixedStudentMessedOrderNumbers extends Command
 
         //$this->info("Finished Fixed Order Number Command");
         
-        Mail::to(env('MAIL_TO','user@admin.com'))->send(new SendMail());
+        if(env('MAIL_TO')){
+            Mail::to(env('MAIL_TO'))->send(new SendMail());
+        }
         //SEND MAIL FUNCTION FOR TEST 
         //USE MAILTRAP.IO
         //WHEN SEND NEW MAIL, ALL MAILS GETTING MAILTRAP INBOX
